@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Mapping tool for followband",
   "main": "app.js",
+  "engines" : { 
+    "node" : "~6.4.0", 
+    "npm" : "~3.9.0" 
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
