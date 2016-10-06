@@ -4,7 +4,7 @@
   var app = angular.module("followmap", ['ui.bootstrap', 'ui.router', 'map.controller', 'MapService', 'DataService']);
 
   app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
-    $urlRouterProvider.otherwise("/main");
+    $urlRouterProvider.otherwise("/map");
     $locationProvider.html5Mode(true);
     $stateProvider
       .state('map', {
