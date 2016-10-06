@@ -2,7 +2,7 @@ var express 		= require("express");
 var bodyParser 		= require("body-parser");
 var path 			= require('path');
 
-var port = process.env.PORT || 8080; 	//set our port
+var port = process.env.PORT || 3000; 	//set our port
 
 //Require routes config
 var routesAPI = require('./app_api/config/routes.js')
