@@ -1,0 +1,93 @@
+@mixin animation($length) {
+	-webkit-transition: all $length cubic-bezier(0.220, 0.990, 0.110, 0.575);
+    -moz-transition: all $length cubic-bezier(0.220, 0.990, 0.110, 0.575);
+    -o-transition: all $length cubic-bezier(0.220, 0.990, 0.110, 0.575);
+    transition: all $length cubic-bezier(0.220, 0.990, 0.110, 0.575); 
+}
+
+@mixin animate-Linear($length) {
+    -webkit-transition: all $length cubic-bezier(0.5, 0.5, 0.5, 0.5);
+    -moz-transition: all $length cubic-bezier(0.5, 0.5, 0.5, 0.5);
+    -o-transition: all $length cubic-bezier(0.5, 0.5, 0.5, 0.5);
+    transition: all $length cubic-bezier(0.5, 0.5, 0.5, 0.5); 
+}
+
+@mixin animate-ease($length) {
+    -webkit-transition: all $length cubic-bezier(.2,.01,.63,.98);
+    -moz-transition: all $length cubic-bezier(.2,.01,.63,.98);
+    -o-transition: all $length cubic-bezier(.2,.01,.63,.98);
+    transition: all $length cubic-bezier(.2,.01,.63,.98); 
+}
+
+@mixin noselect() {
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;   
+  -khtml-user-select: none;    
+  -moz-user-select: none;      
+  -ms-user-select: none;      
+  user-select: none;           
+}
+
+@mixin font($font){
+	font-family: $font, sans-serif;
+}
+
+@mixin fontSelect($font, $type){
+  font-family: $font, $type;
+}
+
+@mixin borderCreate($radius, $width, $style, $color){
+  border-radius: $radius;
+  border-width: $width;
+  border-style: $style;
+  border-color: $color;
+}
+
+@mixin leftRightMargins($left, $right){
+  margin-left: $left;
+  margin-right: $right;
+}
+
+@mixin underlineAfter($height, $width, $margin, $color){
+  content: "";
+  display: block;
+  height: $height;
+  width: $width;
+  margin: $margin auto 0;
+  background-color: $color;
+}
+
+@mixin centerNoFlex(){
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+@mixin centerVerticle(){
+    transform: translate(0%, 25%);
+    -webkit-transform: translate(0%, 25%);
+    -moz-transform: translate(0%, 25%);
+    -o-transform: translate(0%, 25%);
+}
+
+@mixin padding($top, $down, $left, $right){
+  padding-top: ($top);
+  padding-bottom: ($down);
+  padding-left: ($left);
+  padding-right: ($right);
+}
+
+@mixin margin($top, $down, $left, $right){
+  margin-top: ($top);
+  margin-bottom: ($down);
+  margin-left: ($left);
+  margin-right: ($right);
+}
+
+@mixin transformScale($width, $height){
+    -ms-transform: scale($width, $height); 
+    -webkit-transform: scale($width, $height); 
+    transform: scale($width, $height);
+}

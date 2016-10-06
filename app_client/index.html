@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="followmap">
+
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <title>Follow Maps</title>
+
+  <!--Frameworks & Libraries-->
+  <script src="/scripts/angular/angular.js"></script>
+  <script src="/scripts/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+  <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADO_r5rMUjIlhVDEox2d-MwtkKZHSZ0xw&libraries=places"
+  async defer></script>
+
+  <!--SASS/CSS-->
+  <link data-require="bootstrap-css@3.0.3" data-semver="3.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/application.css" />
+
+  <!--JavaScript Files-->
+  <script src="app.js"></script>
+
+  <script src="templates/map/map.controller.js"></script>
+  <script src="services/data.service.js"></script>
+  <script src="services/map.service.js"></script>
+  
+  <!--Fonts-->
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+
+  <div ui-view="mainView">
+
+</body>
+
+</html>
