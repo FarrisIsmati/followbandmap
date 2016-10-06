@@ -4,7 +4,7 @@
   "description": "Mapping tool for followband",
   "main": "app.js",
   "engines": {
-    "node": "~0.12.2",
+    "node": "~6.4.0",
     "npm": "~3.9.0"
   },
   "scripts": {
