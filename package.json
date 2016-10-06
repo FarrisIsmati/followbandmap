@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Mapping tool for followband",
   "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FarrisIsmati/followbandmap.git"
@@ -12,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/FarrisIsmati/followbandmap/issues"
   },
-  "homepage": "https://github.com/FarrisIsmati/followbandmap#readme"
+  "homepage": "https://github.com/FarrisIsmati/followbandmap#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "ui-bootstrap": "^0.1.5"
+  }
 }
