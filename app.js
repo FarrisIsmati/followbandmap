@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 // [SH] Use the API routes when path starts with /api
 app.use('/', routesAPI);
 app.use(function(req, res) {
-    res.sendfile(__dirname + '/app_client/index.html');
+    res.sendFile(__dirname + '/app_client/index.html');
 });
 
 app.listen(port);
