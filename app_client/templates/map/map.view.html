@@ -1,11 +1,97 @@
 <div class="map-page-holder">
 
+	<div ng-show="previewBox" class="preview-box">
+		<svg ng-click="buttonguy('latitudeSVG')" id="latitudeSVG" x="0px" y="0px" width="124px" height="124px" viewBox="0 0 124 124" enable-background="new 0 0 124 124">
+			<g id="Bounding_Guides">
+			</g>
+			<g id="Template_Lucidia_x2F_Lato">
+				<g id="North">
+					<g id="DMS_3_">
+						<g id="DMS_Values_3_">
+						</g>
+						<g id="DMS_Marks_3_">
+							<g>
+								<!-- Double digits 19.5 :: Single Digits 24    Single Digits :: 25px 125px Double Digits :: 16px 125px"-->
+								<text ng-class="{'preview_seconds_double': latsec, 'preview_seconds_single': latsec === false}" font-family="lato, sans-serif" font-size="25.4899">{{latitude[2]}}</text>
+								<!-- Double digits 108.432 :: Single Digits 104-->
+								<line ng-class="{'preview_line_double': latsec, 'preview_line_single': latsec === false}" fill="none" stroke="#000000" stroke-miterlimit="10" x1="108.432" y1="88.9" x2="108.432" y2="98.463"/>
+								<!-- Double digits 115.801 :: Single Digits 109-->
+								<line ng-class="{'preview_line_double': latsec, 'preview_line_single': latsec === false}" fill="none" stroke="#000000" stroke-miterlimit="10" x1="115.801" y1="88.9" x2="115.801" y2="98.463"/>
+							</g>
+							<g>
+								<g>
+									<!-- Double digits 22 :: Single Digits 32-->
+									<text ng-class="{'preview_hours_double': lathour, 'preview_hours_single': lathour === false}" font-family="lato, sans-serif" font-size="25.4899">{{latitude[0]}}</text>
+									<path ng-class="{'preview_circle_double': lathour, 'preview_circle_single': lathour === false}" fill="none" stroke="#000000" stroke-miterlimit="10" d="M61.453,60.814c0,2.447-1.903,4.43-4.253,4.43
+										c-2.348,0-4.247-1.982-4.247-4.43c0-2.452,1.899-4.435,4.247-4.435C59.55,56.38,61.453,58.363,61.453,60.814z"/>
+								</g>
+								<g>
+									<!-- Double digits 68 :: Single Digits 72-->
+									<text ng-class="{'preview_minutes_double': latmin, 'preview_minutes_single': latmin === false}" font-family="lato, sans-serif" font-size="25.4899">{{latitude[1]}}</text>
+									<!-- Double digits x 101.18:: Single Digits x 95.18-->
+									<line ng-class="{'preview_line_min_double': latmin, 'preview_line_min_single': latmin === false}" fill="none" stroke="#000000" stroke-miterlimit="10" x1="95.18" y1="56.033" x2="95.18" y2="65.596"/>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g id="Direction_3_">
+						<text ng-class="{'preview_direction_north': latdirection, 'preview_direction_south': latdirection === false}" transform="matrix(1.1704 0 0 1 34.9609 51.5493)" font-family="Lucida Bright,Georgia,serif" font-size="61.4889">{{latitudeDirection}}</text>
+					</g>
+				</g>
+			</g>
+		</svg>
+		<svg ng-click="buttonguy('longitudeSVG')" id="longitudeSVG" x="0px" y="0px" width="124px" height="124px" viewBox="0 0 124 124" enable-background="new 0 0 124 124">
+			<g id="Bounding_Guides">
+			</g>
+			<g id="Template_Lucidia_x2F_Lato">
+				<g id="North">
+					<g id="DMS_3_">
+						<g id="DMS_Values_3_">
+						</g>
+						<g id="DMS_Marks_3_">
+							<g>
+								<!-- Double digits 19.5 :: Single Digits 24    Single Digits :: 25px 125px Double Digits :: 16px 125px"-->
+								<text ng-class="{'preview_seconds_double': lngsec, 'preview_seconds_single': lngsec === false}" font-family="lato, sans-serif" font-size="25.4899">{{longitude[2]}}</text>
+								<!-- Double digits 108.432 :: Single Digits 104-->
+								<line ng-class="{'preview_line_double': lngsec, 'preview_line_single': lngsec === false}" fill="none" stroke="#000000" stroke-miterlimit="10" x1="108.432" y1="88.9" x2="108.432" y2="98.463"/>
+								<!-- Double digits 115.801 :: Single Digits 109-->
+								<line ng-class="{'preview_line_double': lngsec, 'preview_line_single': lngsec === false}" fill="none" stroke="#000000" stroke-miterlimit="10" x1="115.801" y1="88.9" x2="115.801" y2="98.463"/>
+							</g>
+							<g>
+								<g>
+									<!-- Double digits 22 :: Single Digits 32-->
+									<text ng-class="appliedClass()[0]" font-family="lato, sans-serif" font-size="25.4899">{{longitude[0]}}</text>
+									<path ng-class="appliedClass()[1]" fill="none" stroke="#000000" stroke-miterlimit="10" d="M61.453,60.814c0,2.447-1.903,4.43-4.253,4.43
+										c-2.348,0-4.247-1.982-4.247-4.43c0-2.452,1.899-4.435,4.247-4.435C59.55,56.38,61.453,58.363,61.453,60.814z"/>
+								</g>
+								<g>
+									<!-- Double digits 68 :: Single Digits 72-->
+									<text ng-class="appliedClassMinutes()[0]" font-family="lato, sans-serif" font-size="25.4899">{{longitude[1]}}</text>
+									<!-- Double digits x 101.18:: Single Digits x 95.18-->
+									<line ng-class="appliedClassMinutes()[1]" fill="none" stroke="#000000" stroke-miterlimit="10" x1="95.18" y1="56.033" x2="95.18" y2="65.596"/>
+								</g>
+							</g>
+						</g>
+					</g>
+					<g id="Direction_3_">
+						<text ng-class="{'preview_direction_west': lngdirection, 'preview_direction_east': lngdirection === false}" transform="matrix(1.1704 0 0 1 34.9609 51.5493)" font-family="Lucida Bright,Georgia,serif" font-size="61.4889">{{lngDir}}</text>
+					</g>
+				</g>
+			</g>
+		</svg>
+
+	</div>
+
 	<div class="map-coords-display">
 		<div class="map-coords-display-holder">
-			<p>{{latitudeDirection}}<span>{{latitudeDMS}}</span></p>
-			<p class="map-coords-display-holder-right">{{longitudeDirection}}<span>{{longitudeDMS}}</span></p>
+			<p ng-click="buttonguy('latitudeSVG')">{{latitudeDirection}}<span>{{latitudeDMS}}</span></p>
+			<p ng-click="buttonguy('longitudeSVG')"class="map-coords-display-holder-right">{{longitudeDirection}}<span>{{longitudeDMS}}</span></p>
 		</div>
+
 	</div>
+
+		
+
 
 	<div class="map-holder">
 

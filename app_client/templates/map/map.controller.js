@@ -8,6 +8,17 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
   var mapService = mapService;
   var dataService = dataService;
 
+  $scope.previewBox = false;
+
+  $scope.exportImage = function(){
+    if($scope.previewBox){
+      $scope.previewBox = false;
+    } else{
+      $scope.previewBox = true;
+    }
+  }
+  
+
   // Check if google maps api loaded successfully
   if (typeof google === 'object' && typeof google.maps === 'object') {
 
@@ -42,18 +53,95 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
 
     $scope.latitudeDirection =  mapService.returnLatDir(mapMarker.marker);
     $scope.latitudeDMS = mapService.returnLat(mapMarker.marker)[3];
-    
+    $scope.latitude = mapService.returnLat(mapMarker.marker);
+    $scope.longitude = mapService.returnLng(mapMarker.marker);
     $scope.longitudeDirection = mapService.returnLngDir(mapMarker.marker);
     $scope.longitudeDMS = mapService.returnLng(mapMarker.marker)[3];
+
+    $scope.$watch('latitude', function(newValue, oldValue, scope){
+      if (parseFloat(newValue[2]) > 9.9999){
+         $scope.latsec = true;
+         console.log('run double');
+      } else {
+        $scope.latsec = false;
+        console.log('run single');
+      }
+      if (parseFloat(newValue[1]) > 9.9999){
+         $scope.latmin = true;
+      } else {
+        $scope.latmin = false;
+      }
+      if (parseFloat(newValue[0]) > 9){
+         $scope.lathour = true;
+      } else {
+        $scope.lathour = false;
+      }
+    });
+
+    $scope.$watch('latitudeDirection', function(newValue, oldValue, scope){
+      if (newValue.toLowerCase() === 'n'){
+        $scope.latdirection = true;
+      } else {
+        $scope.latdirection = false;
+      }
+    });
+
+    console.log($scope.longitude);
+    $scope.$watch('longitudeDirection', function(newValue, oldValue, scope){
+      if (newValue.toLowerCase() === 'w'){
+        $scope.lngdirection = true;
+        $scope.lngDir = 'W';
+      } else {
+        $scope.lngdirection = false;
+        $scope.lngDir = 'e';
+      }
+    });
+
+    $scope.$watch('longitude', function(newValue, oldValue, scope){
+      console.log(newValue);
+      if (parseFloat(newValue[2]) > 9.9999){
+         $scope.lngsec = true;
+      } else {
+        $scope.lngsec = false;
+      }
+      $scope.appliedClassMinutes = function() {
+          if (parseFloat(newValue[1]) > 9 && parseFloat(newValue[0]) > 99) {
+            return ["preview_minutes_double_triple", "preview_line_min_triple"];
+          } if (parseFloat(newValue[1]) > 9 && parseFloat(newValue[0]) < 100) {
+            return ["preview_minutes_double", "preview_line_min_double"];
+          } if (parseFloat(newValue[1]) < 10 && parseFloat(newValue[0]) > 99) {
+            return ["preview_minutes_single_triple", "preview_line_single_min_triple"];
+          } if (parseFloat(newValue[1]) < 10 && parseFloat(newValue[0]) < 100) {
+            return ["preview_minutes_single", "preview_line_min_single"];
+          }
+      }
+      $scope.appliedClass = function() {
+          if (parseFloat(newValue[0]) > 9 && parseFloat(newValue[0]) < 100) {
+            return ["preview_hours_double", "preview_circle_double"];
+          } if (parseFloat(newValue[0]) < 10){
+            return ["preview_hours_single", "preview_circle_single"];
+          } if (parseFloat(newValue[0]) > 99) {
+            return ["preview_hours_triple", "preview_circle_triple"];
+          }
+      }
+    });
+
+    $scope.buttonguy = function(id){
+      console.log('lol !!!')
+      saveSvgAsPng(document.getElementById(id), id + " Coordinate", {width: 130, height: 130});
+    }
 
     var callCoords = function(){
       $scope.$apply(function(){
         $scope.latitudeDMS = mapService.returnLat(mapMarker.marker)[3];
+        $scope.latitude = mapService.returnLat(mapMarker.marker);
         $scope.latitudeDirection =  mapService.returnLatDir(mapMarker.marker);
 
         $scope.longitudeDMS = mapService.returnLng(mapMarker.marker)[3];
+        $scope.longitude = mapService.returnLng(mapMarker.marker);
         $scope.longitudeDirection = mapService.returnLngDir(mapMarker.marker);
 
+        console.log($scope.latitudeDMS)
         dataService.storeToLocal('coordinates', mapService.concatonateCoordinates(mapService.returnLatDir(mapMarker.marker) + ' ' + mapService.returnLat(mapMarker.marker)[3], mapService.returnLngDir(mapMarker.marker) + ' ' + mapService.returnLng(mapMarker.marker)[3]));
       });
       
@@ -124,8 +212,9 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
   } else {
     console.log('The Google Maps API Failed to load. :(');
     alert('The Google Maps API Failed to load. :(');
-    $location.path('/shop');
   }
+
+
 
 
 })

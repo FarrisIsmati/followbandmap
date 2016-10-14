@@ -18,6 +18,23 @@
     height: 100%; 
 }
 
+.preview-box{
+    & {
+        background-color:white;
+        z-index: 999;
+        position:absolute;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        -webkit-transform: translate(-50%, 50%);
+        -o-transform: translate(-50%, 50%);
+        padding: 15px;
+        border: solid 1px;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 .map-coords-display{
     & {    
         position:absolute;
@@ -46,12 +63,54 @@
             letter-spacing: 5px;
             font-size: 1.5em;
             font-family: lucidia, serif;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        & p:hover{
+            cursor: pointer;
+            color: white;
         }
         & p span{
             padding-left: 10px;
             font-family: lato, sans-serif;
         }
         &-right{
+        }
+    }
+
+    &-save{
+        &{
+            float:right;
+            background-color: rgba(245,245,245, .89);
+            border-radius: 3px;
+            padding: 10px 5px 2px 5px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none;   /* Chrome/Safari/Opera */
+            -khtml-user-select: none;    /* Konqueror */
+            -moz-user-select: none;      /* Firefox */
+            -ms-user-select: none;       /* Internet Explorer/Edge */
+            user-select: none;           /* Non-prefixed version, currently
+                                              not supported by any browser */
+        }
+        & p{
+            color: #18A6B7;
+            letter-spacing: 5px;
+            font-size: 1.5em;
+            font-family: lucidia, serif;
+        }
+        & p span{
+            padding-left: 10px;
+            font-family: lato, sans-serif;
+        }
+        &-right{
+        }
+        &:hover{
+            cursor: pointer;
         }
     }
 }
@@ -90,6 +149,102 @@
     font-family: Roboto;
 }
 
+.preview_seconds_double{
+    transform: translate(16px, 125px);
+}
+
+.preview_seconds_single{
+    transform: translate(25px, 125px);
+}
+
+.preview_minutes_single{
+    transform: translate(82px, 93px);
+}
+
+.preview_minutes_double_triple{
+    transform: translate(81px, 93px);
+}
+
+.preview_minutes_single_triple{
+    transform: translate(88px, 93px);
+}
+
+.preview_minutes_double{
+    transform: translate(74px, 93px);
+}
+
+.preview_hours_single{
+    transform: translate(35px, 93px);
+}
+
+.preview_hours_double{
+    transform: translate(28px, 93px);
+}
+
+.preview_hours_triple{
+    transform: translate(22px, 93px);
+}
+
+.preview_line_triple{
+    transform: translate(14px, 10px);
+}
+
+.preview_line_single_triple{
+    transform: translate(9px, 10px);
+}
+
+.preview_line_single_min_triple{
+    transform: translate(9px, 10px);
+}
+
+.preview_line_min_triple{
+    transform: translate(17px, 10px);
+}
+
+.preview_line_double{
+    transform: translate(4px, 10px);
+}
+
+.preview_line_single{
+    transform: translate(0px, 10px);
+}
+
+.preview_line_min_single{
+    transform: translate(6px, 10px);
+}
+
+.preview_line_min_double{
+    transform: translate(10px, 10px);
+}
+
+.preview_circle_double{
+    transform: translate(4px, 10px);
+}
+
+.preview_circle_triple{
+    transform: translate(16px, 10px);
+}
+
+.preview_circle_single{
+    transform: translate(-2px, 10px);
+}
+
+.preview_direction_south{
+    transform: translate(50px, 57px);
+}
+
+.preview_direction_north{
+    transform: translate(47px, 57px);
+}
+
+.preview_direction_east{
+    transform: translate(50px, 57px);
+}
+
+.preview_direction_west{
+    transform: translate(40px, 57px);
+}
+
 /* ------------------ MEDIA QUERIES ----------------*/
 
 @media (max-width: 1400px){
@@ -98,6 +253,12 @@
             width: 70%;
         }
         &-holder{
+            & p{
+                font-size: 1.2em;
+            }
+        }
+
+        &-save{
             & p{
                 font-size: 1.2em;
             }
@@ -115,6 +276,11 @@
                 font-size: 1.1em;
             }
         }
+        &-save{
+            & p{
+                font-size: 1.1em;
+            }
+        }
     }
 }
 
@@ -122,11 +288,16 @@
 @media (max-width: 800px){
   .map-coords-display{
         &{
-            width: 85%;
+            width: 75%;
         }
         &-holder{
             & p{
-                font-size: .8em;
+                font-size: .5em;
+            }
+        }
+        &-save{
+            & p{
+                font-size: .5em;
             }
         }
     }
