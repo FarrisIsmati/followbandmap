@@ -16,17 +16,7 @@
   height: 100%; }
 
 .preview-box {
-  background-color: white;
-  z-index: 999;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  -webkit-transform: translate(-50%, 50%);
-  -o-transform: translate(-50%, 50%);
-  padding: 15px;
-  border: solid 1px; }
-.preview-box:hover {
-  cursor: pointer; }
+  display: none; }
 
 .map-coords-display {
   position: absolute;
@@ -161,7 +151,7 @@
   transform: translate(9px, 10px); }
 
 .preview_line_min_triple {
-  transform: translate(17px, 10px); }
+  transform: translate(18px, 10px); }
 
 .preview_line_double {
   transform: translate(4px, 10px); }
@@ -173,7 +163,7 @@
   transform: translate(6px, 10px); }
 
 .preview_line_min_double {
-  transform: translate(10px, 10px); }
+  transform: translate(11px, 10px); }
 
 .preview_circle_double {
   transform: translate(4px, 10px); }

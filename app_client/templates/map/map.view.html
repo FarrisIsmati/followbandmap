@@ -1,7 +1,7 @@
 <div class="map-page-holder">
 
-	<div ng-show="previewBox" class="preview-box">
-		<svg ng-click="buttonguy('latitudeSVG')" id="latitudeSVG" x="0px" y="0px" width="124px" height="124px" viewBox="0 0 124 124" enable-background="new 0 0 124 124">
+	<div class="preview-box">
+		<svg id="latitudeSVG" x="0px" y="0px" width="124px" height="124px" viewBox="0 0 124 124" enable-background="new 0 0 124 124">
 			<g id="Bounding_Guides">
 			</g>
 			<g id="Template_Lucidia_x2F_Lato">
@@ -40,7 +40,7 @@
 				</g>
 			</g>
 		</svg>
-		<svg ng-click="buttonguy('longitudeSVG')" id="longitudeSVG" x="0px" y="0px" width="124px" height="124px" viewBox="0 0 124 124" enable-background="new 0 0 124 124">
+		<svg id="longitudeSVG" x="0px" y="0px" width="124px" height="124px" viewBox="0 0 124 124" enable-background="new 0 0 124 124">
 			<g id="Bounding_Guides">
 			</g>
 			<g id="Template_Lucidia_x2F_Lato">
@@ -84,8 +84,8 @@
 
 	<div class="map-coords-display">
 		<div class="map-coords-display-holder">
-			<p ng-click="buttonguy('latitudeSVG')">{{latitudeDirection}}<span>{{latitudeDMS}}</span></p>
-			<p ng-click="buttonguy('longitudeSVG')"class="map-coords-display-holder-right">{{longitudeDirection}}<span>{{longitudeDMS}}</span></p>
+			<p ng-click="exportsvg('latitudeSVG')">{{latitudeDirection}}<span>{{latitudeDMS}}</span></p>
+			<p ng-click="exportsvg('longitudeSVG')"class="map-coords-display-holder-right">{{longitudeDirection}}<span>{{longitudeDMS}}</span></p>
 		</div>
 
 	</div>

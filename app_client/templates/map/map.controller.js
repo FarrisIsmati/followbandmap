@@ -8,17 +8,6 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
   var mapService = mapService;
   var dataService = dataService;
 
-  $scope.previewBox = false;
-
-  $scope.exportImage = function(){
-    if($scope.previewBox){
-      $scope.previewBox = false;
-    } else{
-      $scope.previewBox = true;
-    }
-  }
-  
-
   // Check if google maps api loaded successfully
   if (typeof google === 'object' && typeof google.maps === 'object') {
 
@@ -47,24 +36,21 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
 
     var saveDecimalDegreesToStorage = function(){
       var latLngDecimalDegrees = [mapService.returnLat(mapMarker.marker)[4], mapService.returnLng(mapMarker.marker)[4]]
-
       localStorage.setItem('decimalDegrees', JSON.stringify(latLngDecimalDegrees));
     }
 
-    $scope.latitudeDirection =  mapService.returnLatDir(mapMarker.marker);
-    $scope.latitudeDMS = mapService.returnLat(mapMarker.marker)[3];
     $scope.latitude = mapService.returnLat(mapMarker.marker);
     $scope.longitude = mapService.returnLng(mapMarker.marker);
+    $scope.latitudeDirection =  mapService.returnLatDir(mapMarker.marker);
+    $scope.latitudeDMS = mapService.returnLat(mapMarker.marker)[3];
     $scope.longitudeDirection = mapService.returnLngDir(mapMarker.marker);
     $scope.longitudeDMS = mapService.returnLng(mapMarker.marker)[3];
 
     $scope.$watch('latitude', function(newValue, oldValue, scope){
       if (parseFloat(newValue[2]) > 9.9999){
          $scope.latsec = true;
-         console.log('run double');
       } else {
         $scope.latsec = false;
-        console.log('run single');
       }
       if (parseFloat(newValue[1]) > 9.9999){
          $scope.latmin = true;
@@ -86,19 +72,7 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
       }
     });
 
-    console.log($scope.longitude);
-    $scope.$watch('longitudeDirection', function(newValue, oldValue, scope){
-      if (newValue.toLowerCase() === 'w'){
-        $scope.lngdirection = true;
-        $scope.lngDir = 'W';
-      } else {
-        $scope.lngdirection = false;
-        $scope.lngDir = 'e';
-      }
-    });
-
     $scope.$watch('longitude', function(newValue, oldValue, scope){
-      console.log(newValue);
       if (parseFloat(newValue[2]) > 9.9999){
          $scope.lngsec = true;
       } else {
@@ -126,8 +100,17 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
       }
     });
 
-    $scope.buttonguy = function(id){
-      console.log('lol !!!')
+    $scope.$watch('longitudeDirection', function(newValue, oldValue, scope){
+      if (newValue.toLowerCase() === 'w'){
+        $scope.lngdirection = true;
+        $scope.lngDir = 'W';
+      } else {
+        $scope.lngdirection = false;
+        $scope.lngDir = 'e';
+      }
+    });
+
+    $scope.exportsvg = function(id){
       saveSvgAsPng(document.getElementById(id), id + " Coordinate", {width: 130, height: 130});
     }
 
@@ -144,14 +127,12 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
         console.log($scope.latitudeDMS)
         dataService.storeToLocal('coordinates', mapService.concatonateCoordinates(mapService.returnLatDir(mapMarker.marker) + ' ' + mapService.returnLat(mapMarker.marker)[3], mapService.returnLngDir(mapMarker.marker) + ' ' + mapService.returnLng(mapMarker.marker)[3]));
       });
-      
       saveDecimalDegreesToStorage();
     }
 
     google.maps.event.addListener(mapMarker.marker, 'dragend', function(evt){
       callCoords();
     });
-
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -197,25 +178,10 @@ app.controller('map.controller', function($scope, $location, mapService, dataSer
 
     });
 
-    // Map Display Tip
-
-    $scope.className = "map-display-tip-deactive";
-
-    $scope.changeClass = function(){
-      if ($scope.className === "map-display-tip-deactive"){
-        $scope.className = "map-display-tip";
-      }
-      else{
-        $scope.className = "map-display-tip-deactive";
-      }
-    };
   } else {
     console.log('The Google Maps API Failed to load. :(');
     alert('The Google Maps API Failed to load. :(');
   }
-
-
-
 
 })
 }());
